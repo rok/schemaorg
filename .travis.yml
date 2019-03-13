@@ -9,7 +9,6 @@ env:
 before_install:
   - sudo apt-get install -y libxml2-utils
 before_script:
-  - uname -a
   - SDK_URL=https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.50.zip
   - wget $SDK_URL -nv -O google_appengine.zip
   - unzip -q google_appengine.zip
@@ -18,8 +17,8 @@ before_script:
   - rvm install 2.4.0
   - bundle install --gemfile=scripts/Gemfile
 script:
+  - xmllint --noout data/*.rdfa data/ext/*/*.rdfa
   - python scripts/run_tests.py
   - (cd scripts; bundle exec rake)
-  - xmllint --noout data/*.rdfa data/ext/*/*.rdfa
 sudo: false
 cache: bundler
