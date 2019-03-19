@@ -118,6 +118,7 @@ JSON:
       "@type": "schema:Person",
       "schema:name": "John Smith"
     }
+}
   ]
 }
 </script>
